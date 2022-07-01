@@ -1,0 +1,29 @@
+server:
+  port: 8081
+spring:
+  datasource:
+    #  驱动
+    driverClassName: org.h2.Driver
+    password: sa
+    # h2 内存数据库 内存模式连接配置 库名:dbtest
+    url: jdbc:h2:mem:dbtest
+    username: sa
+  h2:
+    console:
+      #    开启console 访问 默认false
+      enabled: true
+      #  h2 访问路径上下文
+      path: /h2
+      settings:
+        web-allow-others: true
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  sql:
+    init:
+      #  初始化数据 DML
+      data-locations: classpath:db/data.sql
+      platform: h2
+      # 初始化数据表 DDL
+      schema-locations: classpath:db/schema.sql
